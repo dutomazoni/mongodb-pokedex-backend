@@ -1,0 +1,370 @@
+openapi: '3.0.1'
+info:
+  title: Routes
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: dutomazoni@gmail.com
+  version: '1.0'
+servers:
+  - url: http://localhost:5001
+tags:
+  - name: User
+    description: Users' routes.
+
+paths:
+  /users:
+    get:
+      tags:
+        - User
+      summary: Get first 50 users from the db.
+      description: Request shape - http://localhost:5001/users
+      operationId: getUsers
+      responses:
+        200:
+          description: Returns the users.
+          content:
+            application/json:
+              examples:
+                getUsers:
+                  value:
+                    {
+                      "users": [
+                        {
+                          "name": {
+                            "title": "Ms",
+                            "first": "Franci",
+                            "last": "Farias"
+                          },
+                          "location": {
+                            "coordinates": {
+                              "latitude": "-49.0651",
+                              "longitude": "61.6632"
+                            },
+                            "timezone": {
+                              "offset": "-10:00",
+                              "description": "Hawaii"
+                            },
+                            "city": "Santa Luzia",
+                            "state": "Goiás",
+                            "postcode": "32262"
+                          },
+                          "login": {
+                            "uuid": "9acc42ab-0745-48da-b3a5-750bb2ec54e4",
+                            "username": "angrypanda687",
+                            "password": "yousuck",
+                            "salt": "l6zFvOwK",
+                            "md5": "8d4a05213e57a2db1b36c745976a1db2",
+                            "sha1": "11115b52a6d3dfbb1c70697f811a16a93598a860",
+                            "sha256": "f3c0f6da43c872ecb2b1b34169b738c973dbbd5bf704a36c32c97a97cac4cf76"
+                          },
+                          "dob": {
+                            "date": "1992-08-18T13:16:59.839Z",
+                            "age": 28
+                          },
+                          "registered": {
+                            "date": "2015-04-27T18:40:30.248Z",
+                            "age": 5
+                          },
+                          "picture": {
+                            "large": "https://randomuser.me/api/portraits/women/81.jpg",
+                            "medium": "https://randomuser.me/api/portraits/med/women/81.jpg",
+                            "thumbnail": "https://randomuser.me/api/portraits/thumb/women/81.jpg"
+                          },
+                          "_id": "612122c7da71882464746b4b",
+                          "gender": "female",
+                          "email": "francelina.farias@example.com",
+                          "phone": "(81) 0504-0006",
+                          "cell": "(26) 1772-1832",
+                          "id": {
+                            "name": "",
+                            "value": null
+                          },
+                          "nat": "BR"
+                        }
+                      ]
+                    }
+  /users/{userId}:
+    get:
+      tags:
+        - User
+      summary: Get the user by id.
+      description: Request shape - http://localhost:5001/users/*userId*
+      operationId: getUser
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+            example: "6122cabcb383423760503bb5"
+      responses:
+        200:
+          description: Returns the user.
+          content:
+            application/json:
+              examples:
+                getUser:
+                  value:
+                    {
+                      "user": {
+                        "name": {
+                          "title": "Ms",
+                          "first": "Franci",
+                          "last": "Farias"
+                        },
+                        "location": {
+                          "coordinates": {
+                            "latitude": "-49.0651",
+                            "longitude": "61.6632"
+                          },
+                          "timezone": {
+                            "offset": "-10:00",
+                            "description": "Hawaii"
+                          },
+                          "city": "Santa Luzia",
+                          "state": "Goiás",
+                          "postcode": "32262"
+                        },
+                        "login": {
+                          "uuid": "9acc42ab-0745-48da-b3a5-750bb2ec54e4",
+                          "username": "angrypanda687",
+                          "password": "yousuck",
+                          "salt": "l6zFvOwK",
+                          "md5": "8d4a05213e57a2db1b36c745976a1db2",
+                          "sha1": "11115b52a6d3dfbb1c70697f811a16a93598a860",
+                          "sha256": "f3c0f6da43c872ecb2b1b34169b738c973dbbd5bf704a36c32c97a97cac4cf76"
+                        },
+                        "dob": {
+                          "date": "1992-08-18T13:16:59.839Z",
+                          "age": 28
+                        },
+                        "registered": {
+                          "date": "2015-04-27T18:40:30.248Z",
+                          "age": 5
+                        },
+                        "picture": {
+                          "large": "https://randomuser.me/api/portraits/women/81.jpg",
+                          "medium": "https://randomuser.me/api/portraits/med/women/81.jpg",
+                          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/81.jpg"
+                        },
+                        "_id": "612122c7da71882464746b4b",
+                        "gender": "female",
+                        "email": "francelina.farias@example.com",
+                        "phone": "(81) 0504-0006",
+                        "cell": "(26) 1772-1832",
+                        "id": {
+                          "name": "",
+                          "value": null
+                        },
+                        "nat": "BR"
+                      }
+                    }
+    delete:
+      tags:
+        - User
+      summary: Delete the user by id.
+      description: Request shape - http://localhost:5001/users/*userId*
+      operationId: deleteUser
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+            example: "6122cabcb383423760503bb8"
+      responses:
+        200:
+          description: Returns user deleted message.
+          content:
+            application/json:
+              examples:
+                deleteUser:
+                  value:
+                    {
+                      "message": "User deleted successfully!"
+                    }
+    put:
+      tags:
+        - User
+      summary: Edit user's information.
+      description: Request shape - http://localhost:5001/users/*userId*
+      operationId: putUser
+      parameters:
+        - in: path
+          required: true
+          name: putUser
+          schema:
+            type: string
+            example: "6122cabcb383423760503bb5"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name_first:
+                  type: string
+                name_last:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                nat:
+                  type: string
+                dob:
+                  type: string
+              example:
+                name_first: "First"
+                name_last: "Last"
+                email: "email@test.com"
+                phone: "14234233"
+                nat: "ARG"
+                "dob": "2020-11-26T12:38:12.506Z"
+        required: true
+      responses:
+        200:
+          description: Returns the edited user.
+          content:
+            application/json:
+              examples:
+                putUser:
+                  value:
+                    {
+                      "user": {
+                        "name": {
+                          "title": "Ms",
+                          "first": "Franci",
+                          "last": "Farias"
+                        },
+                        "location": {
+                          "coordinates": {
+                            "latitude": "-49.0651",
+                            "longitude": "61.6632"
+                          },
+                          "timezone": {
+                            "offset": "-10:00",
+                            "description": "Hawaii"
+                          },
+                          "city": "Santa Luzia",
+                          "state": "Goiás",
+                          "postcode": "32262"
+                        },
+                        "login": {
+                          "uuid": "9acc42ab-0745-48da-b3a5-750bb2ec54e4",
+                          "username": "angrypanda687",
+                          "password": "yousuck",
+                          "salt": "l6zFvOwK",
+                          "md5": "8d4a05213e57a2db1b36c745976a1db2",
+                          "sha1": "11115b52a6d3dfbb1c70697f811a16a93598a860",
+                          "sha256": "f3c0f6da43c872ecb2b1b34169b738c973dbbd5bf704a36c32c97a97cac4cf76"
+                        },
+                        "dob": {
+                          "date": "1992-08-18T13:16:59.839Z",
+                          "age": 28
+                        },
+                        "registered": {
+                          "date": "2015-04-27T18:40:30.248Z",
+                          "age": 5
+                        },
+                        "picture": {
+                          "large": "https://randomuser.me/api/portraits/women/81.jpg",
+                          "medium": "https://randomuser.me/api/portraits/med/women/81.jpg",
+                          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/81.jpg"
+                        },
+                        "_id": "612122c7da71882464746b4b",
+                        "gender": "female",
+                        "email": "francelina.farias@example.com",
+                        "phone": "14234233",
+                        "cell": "(26) 1772-1832",
+                        "id": {
+                          "name": "",
+                          "value": null
+                        },
+                        "nat": "BR"
+                      }
+                    }
+  /search_user/:
+    post:
+      tags:
+        - User
+      summary: Search for user using parameters.
+      description: Request shape - http://localhost:5001/search_user/
+      operationId: searchUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                type:
+                  type: string
+              example:
+                query: "ARG"
+                type: "nat"
+      responses:
+        200:
+          description: Returns users found.
+          content:
+            application/json:
+              examples:
+                searchUser:
+                  value:
+                    {
+                      "users": [
+                        {
+                          "name": {
+                            "title": "Ms",
+                            "first": "Franci",
+                            "last": "Farias"
+                          },
+                          "location": {
+                            "coordinates": {
+                              "latitude": "-49.0651",
+                              "longitude": "61.6632"
+                            },
+                            "timezone": {
+                              "offset": "-10:00",
+                              "description": "Hawaii"
+                            },
+                            "city": "Santa Luzia",
+                            "state": "Goiás",
+                            "postcode": "32262"
+                          },
+                          "login": {
+                            "uuid": "9acc42ab-0745-48da-b3a5-750bb2ec54e4",
+                            "username": "angrypanda687",
+                            "password": "yousuck",
+                            "salt": "l6zFvOwK",
+                            "md5": "8d4a05213e57a2db1b36c745976a1db2",
+                            "sha1": "11115b52a6d3dfbb1c70697f811a16a93598a860",
+                            "sha256": "f3c0f6da43c872ecb2b1b34169b738c973dbbd5bf704a36c32c97a97cac4cf76"
+                          },
+                          "dob": {
+                            "date": "2020-11-26T12:38:12.506Z",
+                            "age": 28
+                          },
+                          "registered": {
+                            "date": "2015-04-27T18:40:30.248Z",
+                            "age": 5
+                          },
+                          "picture": {
+                            "large": "https://randomuser.me/api/portraits/women/81.jpg",
+                            "medium": "https://randomuser.me/api/portraits/med/women/81.jpg",
+                            "thumbnail": "https://randomuser.me/api/portraits/thumb/women/81.jpg"
+                          },
+                          "_id": "612122c7da71882464746b4b",
+                          "gender": "female",
+                          "email": "francelina.farias@example.com",
+                          "phone": "14234233",
+                          "cell": "(26) 1772-1832",
+                          "id": {
+                            "name": "",
+                            "value": null
+                          },
+                          "nat": "ARG"
+                        }
+                      ]
+                    }
