@@ -28,4 +28,13 @@ router.get(
     animal_routes.get_animals
 );
 
+router.delete(
+    '/animal/:animalId',
+    animal_routes.delete_animal
+);
+router.put(
+    '/animal/:animalId',
+    animal_routes.put_animal
+);
+
 export default router;
