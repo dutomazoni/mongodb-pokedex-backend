@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 10000",
     "start": "node index.js",
     "start-and-test": "SET NODE_ENV=test && start-server-and-test http://localhost:8080",
     "start-web": "nodemon index.js "
