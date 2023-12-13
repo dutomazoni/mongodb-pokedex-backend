@@ -20,7 +20,7 @@ app.use((req, res, next) => {
     next();
 });
 
-let mongoDb =  process.env.URL;
+let mongoDb =  process.env.MONGOURI;
 
 mongoose.connect(mongoDb, { useNewUrlParser: true , useUnifiedTopology: true, useFindAndModify: false});
 let db = mongoose.connection
