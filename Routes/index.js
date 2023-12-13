@@ -3,6 +3,6 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.use(animal_routes);
+router.use('api/', animal_routes);
 
 export default router;
