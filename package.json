@@ -21,8 +21,10 @@
     "express": "^4.17.1",
     "mongodb": "^4.0.1",
     "mongoose": "^5.13.3",
+    "netlify-lambda": "^2.0.16",
     "nodemon": "^2.0.12",
     "path": "^0.12.7",
+    "serverless-http": "^3.2.0",
     "start-server-and-test": "^1.13.1"
   },
   "devDependencies": {
